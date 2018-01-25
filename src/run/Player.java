@@ -12,16 +12,16 @@ public class Player extends Runner{
 		super(full, width, height, title, fps, tps);
 	}
 
-	List<Firework> parts = new ArrayList<Firework>();
+	List<Firework> rockets = new ArrayList<Firework>();
 	List<Particle> sparks = new ArrayList<Particle>();
 
 	@Override
 	public void tick() {
-		if(Math.random()< 0.2D){
-			parts.add(new Firework(new Vector2f(Math.random()*(width + 0D), height), new Vector2f(2-(Math.random()*4), -(40+(Math.random()*10D)))));
+		if(Math.random() < 0.4D){
+			rockets.add(new Firework(new Vector2f(Math.random()*(width + 0D), height), new Vector2f(2-(Math.random()*4), -(40+(Math.random()*10D)))));
 		}
-		for(int i = 0; i < parts.size(); i++){
-			parts.get(i).update(parts, i, sparks);
+		for(int i = 0; i < rockets.size(); i++){
+			rockets.get(i).update(rockets, i, sparks);
 		}
 		
 		for(int i = 0; i < sparks.size(); i++){
@@ -31,8 +31,8 @@ public class Player extends Runner{
 
 	@Override
 	public void render() {
-		for(int i = 0; i < parts.size(); i++){
-			parts.get(i).render(g);
+		for(int i = 0; i < rockets.size(); i++){
+			rockets.get(i).render(g);
 		}
 		
 		for(int i = 0; i < sparks.size(); i++){
